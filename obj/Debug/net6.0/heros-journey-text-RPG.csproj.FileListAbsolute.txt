@@ -1,0 +1,15 @@
+C:\Users\Gui23\source\repos\heros-journey-text-RPG\bin\Debug\net6.0\heros-journey-text-RPG.exe
+C:\Users\Gui23\source\repos\heros-journey-text-RPG\bin\Debug\net6.0\heros-journey-text-RPG.deps.json
+C:\Users\Gui23\source\repos\heros-journey-text-RPG\bin\Debug\net6.0\heros-journey-text-RPG.runtimeconfig.json
+C:\Users\Gui23\source\repos\heros-journey-text-RPG\bin\Debug\net6.0\heros-journey-text-RPG.dll
+C:\Users\Gui23\source\repos\heros-journey-text-RPG\bin\Debug\net6.0\heros-journey-text-RPG.pdb
+C:\Users\Gui23\source\repos\heros-journey-text-RPG\obj\Debug\net6.0\heros-journey-text-RPG.csproj.AssemblyReference.cache
+C:\Users\Gui23\source\repos\heros-journey-text-RPG\obj\Debug\net6.0\heros-journey-text-RPG.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Gui23\source\repos\heros-journey-text-RPG\obj\Debug\net6.0\heros-journey-text-RPG.AssemblyInfoInputs.cache
+C:\Users\Gui23\source\repos\heros-journey-text-RPG\obj\Debug\net6.0\heros-journey-text-RPG.AssemblyInfo.cs
+C:\Users\Gui23\source\repos\heros-journey-text-RPG\obj\Debug\net6.0\heros-journey-text-RPG.csproj.CoreCompileInputs.cache
+C:\Users\Gui23\source\repos\heros-journey-text-RPG\obj\Debug\net6.0\heros-journey-text-RPG.dll
+C:\Users\Gui23\source\repos\heros-journey-text-RPG\obj\Debug\net6.0\refint\heros-journey-text-RPG.dll
+C:\Users\Gui23\source\repos\heros-journey-text-RPG\obj\Debug\net6.0\heros-journey-text-RPG.pdb
+C:\Users\Gui23\source\repos\heros-journey-text-RPG\obj\Debug\net6.0\heros-journey-text-RPG.genruntimeconfig.cache
+C:\Users\Gui23\source\repos\heros-journey-text-RPG\obj\Debug\net6.0\ref\heros-journey-text-RPG.dll

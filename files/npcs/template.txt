@@ -1,0 +1,8 @@
+name
+hp
+strength
+dexterity
+constitution
+charisma
+intelligence
+wisdom

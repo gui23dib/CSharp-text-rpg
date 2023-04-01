@@ -1,0 +1,13 @@
+12
+goblin
+kobold
+merfolk
+treesfolk
+wolf
+werewolf
+sand warrior
+squirrel
+dwarf
+elf
+imp
+wandering spirit
