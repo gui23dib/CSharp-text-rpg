@@ -1,4 +1,4 @@
-11
+13
 a park
 a cavern
 the local night market
@@ -10,3 +10,5 @@ a prison
 a castle
 the middle of the road
 a local ranch
+a floating mountain
+an abandoned mansion

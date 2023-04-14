@@ -12,9 +12,8 @@ namespace program
             Character hero = new Character();
             hero.InitHeroCharacter();
 
-            Encounter encounter = new Encounter();
-            encounter.GenerateEncounter();
-            encounter.PrintEncounter();
+                Encounter encounter = new Encounter();
+                encounter.runNewEncounter();
 
         }
     }

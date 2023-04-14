@@ -46,7 +46,7 @@ namespace heros_journey_text_RPG.character
     {
         public int? npcId;
         public string name;
-        int health_points;
+        public int health_points;
         int exp_points;
         int action_points;
         int level;
@@ -84,6 +84,7 @@ namespace heros_journey_text_RPG.character
         public void HeroClassSelection()
         {
             Console.Write("1 - Wizard\n2 - Warrior\n3 - Barbarian\n");
+            Console.Write("Choose your class: ");
             switch (Console.ReadLine())
             {
                 case "1":
@@ -91,7 +92,6 @@ namespace heros_journey_text_RPG.character
                     break;
                 case "2":
                     char_class = "Warrior";
-
                     break;
                 case "3":
                     char_class = "Barbarian";
@@ -103,4 +103,4 @@ namespace heros_journey_text_RPG.character
             }
         }
     }
-    }
+}
