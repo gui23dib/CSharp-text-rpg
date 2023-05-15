@@ -13,9 +13,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Gui23\\OneDrive\\Área de Trabalho\\CSharp-text-rpg\\heros-journey-text-RPG.csproj",
-      "projectName": "heros-journey-text-RPG",
-      "projectPath": "C:\\Users\\Gui23\\OneDrive\\Área de Trabalho\\CSharp-text-rpg\\heros-journey-text-RPG.csproj",
+      "projectUniqueName": "C:\\Users\\Gui23\\OneDrive\\Área de Trabalho\\CSharp-text-rpg\\CSharp-text-rpg.csproj",
+      "projectName": "CSharp-text-rpg",
+      "projectPath": "C:\\Users\\Gui23\\OneDrive\\Área de Trabalho\\CSharp-text-rpg\\CSharp-text-rpg.csproj",
       "packagesPath": "C:\\Users\\Gui23\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\Gui23\\OneDrive\\Área de Trabalho\\CSharp-text-rpg\\obj\\",
       "projectStyle": "PackageReference",
