@@ -9,10 +9,10 @@ namespace program
     {
         static void Main(string[] args)
         {
-            Character hero = new Character();
+            Hero hero = new Hero();
             hero.InitHeroCharacter();
 
-                Encounter encounter = new Encounter();
+                Encounter encounter = new Encounter(hero);
                 encounter.runNewEncounter();
 
         }

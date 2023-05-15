@@ -10,11 +10,16 @@ namespace heros_journey_text_RPG.encounters
 {
     public class Encounter
     {
-        string situation;
-        string location;
-        Character character = new Character();
+        string situation { set; get; }
+        string location { set; get; }
+        Enemy character = new Enemy();
 
-        private Actions actions = new Actions();
+        private Actions actions;
+
+        public Encounter(Hero hero) {
+            GenerateEncounter();
+            actions = new Actions(hero, character);
+        }
 
         private void GenerateEncounter()
         {
@@ -42,15 +47,16 @@ namespace heros_journey_text_RPG.encounters
         {
             Console.WriteLine("1 - Attack\n2 - Run\n3 - Talk");
 
-            Dictionary<string, Func<bool>> actionDictionary = new Dictionary<string, Func<bool>>()
-            {
-                {"1", actions.AttackAction},
-                {"2", actions.RunAction},
-                {"3", actions.TalkAction},
-            };
-
             Console.Write("Choose your action: ");
-            _ = actionDictionary[Console.ReadLine()];
+            var UserInput = Console.ReadLine();
+            if (UserInput == "1") actions.AttackAction();
+            if (UserInput == "2") actions.RunAction();
+            if (UserInput == "3") actions.TalkAction();
+            else
+            {
+
+            }
+
         }
 
         public void runNewEncounter()
@@ -60,25 +66,6 @@ namespace heros_journey_text_RPG.encounters
             GenerateEncounter();
             PrintEncounter();
             GetEncounterOtpions();
-        }
-    }
-
-
-    public class Actions
-    {
-        public bool AttackAction()
-        {
-            return false;
-        }
-
-        public bool RunAction()
-        {
-            return false;
-        }
-
-        public bool TalkAction()
-        {
-            return false;
         }
     }
 }
