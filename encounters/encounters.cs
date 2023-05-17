@@ -1,5 +1,6 @@
 ﻿using heros_journey_text_RPG.character;
 using heros_journey_text_RPG.encounters;
+using heros_journey_text_RPG.utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,35 +13,28 @@ namespace heros_journey_text_RPG.encounters
     {
         string situation { set; get; }
         string location { set; get; }
-        Enemy character = new Enemy();
+        Enemy Enemy = new Enemy();
+        private Hero Hero;
 
         private Actions actions;
 
         public Encounter(Hero hero) {
             GenerateEncounter();
-            actions = new Actions(hero, character);
+            Hero = hero;
+            actions = new Actions(Hero, Enemy);
         }
 
         private void GenerateEncounter()
         {
-            situation = GetRandomFileLine("..\\..\\..\\files\\situations.txt");
-            location = GetRandomFileLine("..\\..\\..\\files\\locations.txt");
-            character.name = GetRandomFileLine("..\\..\\..\\files\\characters.txt");
+            situation = Utils.GetRandomFileLine("..\\..\\..\\files\\situations.txt");
+            location = Utils.GetRandomFileLine("..\\..\\..\\files\\locations.txt");
+            Enemy.name = Utils.GetRandomFileLine("..\\..\\..\\files\\characters.txt");
         }
 
         private void PrintEncounter()
         {
-            string characterPrefix = "aeiouAEIOU".IndexOf(character.name[0]) >= 0 ? "an" : "a";
-            Console.WriteLine("You found {0} {1} in {2} {3}\n", characterPrefix, character.name, location, situation);
-        }
-
-        private string GetRandomFileLine(string filename)
-        {
-            string[] lines = File.ReadAllLines(filename);
-            Random rnd = new Random();
-            int choosen_line = rnd.Next(1, int.Parse(lines[0]));
-
-            return lines[choosen_line];
+            string characterPrefix = "aeiouAEIOU".IndexOf(Enemy.name[0]) >= 0 ? "an" : "a";
+            Console.WriteLine("You found {0} {1} in {2} {3}\n", characterPrefix, Enemy.name, location, situation);
         }
 
         private void GetEncounterOtpions()
@@ -54,7 +48,8 @@ namespace heros_journey_text_RPG.encounters
             if (UserInput == "3") actions.TalkAction();
             else
             {
-
+                Console.Clear();
+                GetEncounterOtpions();
             }
 
         }
@@ -62,7 +57,7 @@ namespace heros_journey_text_RPG.encounters
         public void runNewEncounter()
         {
             Console.Clear();
-
+            
             GenerateEncounter();
             PrintEncounter();
             GetEncounterOtpions();

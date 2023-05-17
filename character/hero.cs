@@ -11,8 +11,8 @@ namespace heros_journey_text_RPG.character
     public class Hero : Character
     {
         public string name { set; get; }
-        int level { set; get; }
-        int exp_points { set; get; }
+        public int level { set; get; }
+        public int exp_points { set; get; }
 
         public void InitHeroCharacter()
         {
@@ -33,13 +33,19 @@ namespace heros_journey_text_RPG.character
             exp_points = 0;
             health_points = 12;
 
-            Console.WriteLine("{0} - lvl {1} {2}", name, level, char_class);
-            Console.WriteLine("HP: {0} \t EXP: {1}\n", health_points, exp_points);
+            PrintHeroMainStats();
 
             base.att.PrintAttributes();
 
             Console.WriteLine("\nStart your adventure by presing any keys...");
             Console.ReadLine();
+        }
+
+        public void PrintHeroMainStats()
+        {
+
+            Console.WriteLine("{0} - lvl {1} {2}", name, level, char_class);
+            Console.WriteLine("HP: {0} \t EXP: {1}\n", health_points, exp_points);
         }
 
         public void HeroClassSelection()

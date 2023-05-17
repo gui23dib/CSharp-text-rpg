@@ -12,9 +12,11 @@ namespace program
             Hero hero = new Hero();
             hero.InitHeroCharacter();
 
-                Encounter encounter = new Encounter(hero);
+            Encounter encounter = new Encounter(hero);
+            while (true) { 
                 encounter.runNewEncounter();
-
+                Console.ReadLine();
+            }
         }
     }
 }
