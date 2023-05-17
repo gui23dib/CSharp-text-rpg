@@ -8,12 +8,12 @@ namespace heros_journey_text_RPG.character
 {
     public class Attributes
     {
-        public int dex { private set; get; } //dexterity
-        public int str { private set; get; } //strentgh
-        public int cons { private set; get; } //constitution
-        public int wis { private set; get; } //wisdowm
-        public int inte { private set; get; } // intelligence
-        public int cha { private set; get; } //charisma
+        public int dex { set; get; } //dexterity
+        public int str { set; get; } //strentgh
+        public int cons { set; get; } //constitution
+        public int wis { set; get; } //wisdowm
+        public int inte { set; get; } // intelligence
+        public int cha { set; get; } //charisma
 
         public Attributes()
         {
@@ -35,5 +35,15 @@ namespace heros_journey_text_RPG.character
             Console.WriteLine("<{0}> wisdom", wis);
         }
 
+        public bool IsAnyAttributeEmpty()
+        {
+            if (str <= 0) return true;
+            if (dex <= 0) return true;
+            if (cons <= 0) return true;
+            if (cha <= 0) return true;
+            if (inte <= 0) return true;
+            if (wis <= 0) return true;
+            return false;
+        }
     }
 }

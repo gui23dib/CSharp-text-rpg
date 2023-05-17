@@ -22,14 +22,8 @@ namespace heros_journey_text_RPG.character
         public double checkClassInteractionsNum(Character entity)
         {
             if (char_class == entity.char_class) return 1;
-            try
-            {
-                if (char_class == entity.char_class--) return 2;
-                if (char_class == entity.char_class++) return 0.5;
-            } catch(Exception ex)
-            {
-                return 0;
-            }
+            if (char_class == entity.char_class--) return 2;
+            if (char_class == entity.char_class++) return 0.5;
             return 1;
         }
     }

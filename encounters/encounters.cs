@@ -17,6 +17,7 @@ namespace heros_journey_text_RPG.encounters
         private Hero Hero;
 
         private Actions actions;
+        public bool continueEncounter = false;
 
         public Encounter(Hero hero) {
             GenerateEncounter();
@@ -37,19 +38,20 @@ namespace heros_journey_text_RPG.encounters
             Console.WriteLine("You found {0} {1} in {2} {3}\n", characterPrefix, Enemy.name, location, situation);
         }
 
-        private void GetEncounterOtpions()
+        private bool GetEncounterOtpions()
         {
             Console.WriteLine("1 - Attack\n2 - Run\n3 - Talk");
 
             Console.Write("Choose your action: ");
             var UserInput = Console.ReadLine();
-            if (UserInput == "1") actions.AttackAction();
-            if (UserInput == "2") actions.RunAction();
-            if (UserInput == "3") actions.TalkAction();
+            if (UserInput == "1") return actions.AttackAction();
+            if (UserInput == "2") return actions.RunAction();
+            if (UserInput == "3") return actions.TalkAction();
             else
             {
                 Console.Clear();
                 GetEncounterOtpions();
+                return false;
             }
 
         }
@@ -57,10 +59,13 @@ namespace heros_journey_text_RPG.encounters
         public void runNewEncounter()
         {
             Console.Clear();
-            
+            Enemy.ResetAttributes();
             GenerateEncounter();
-            PrintEncounter();
-            GetEncounterOtpions();
+            do
+            {
+                PrintEncounter();
+                continueEncounter = GetEncounterOtpions();
+            } while (continueEncounter);
         }
     }
 }

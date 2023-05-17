@@ -33,7 +33,7 @@ namespace heros_journey_text_RPG.encounters
             Console.Clear();
             Console.WriteLine($"RESOLVING {action} ACTION...\n");
             PrintEncounterInterface();
-            Console.WriteLine($"============================================================================\n\n");
+            Console.WriteLine($"============================================================================\n");
 
         }
 
@@ -66,11 +66,19 @@ namespace heros_journey_text_RPG.encounters
         {
             InitiateNewAction("TALK");
             var die = CompareDieAction();
-            if (die > 0) GetFileInfo("TALK", "good");
-            else if (die < 0) GetFileInfo("TALK", "bad");
+            if (die > 0)
+            {
+                GetFileInfo("TALK", "good");
+                Enemy.att.cha -= die;
+            }
+            else if (die < 0)
+            {
+                GetFileInfo("TALK", "bad");
+            }
             else GetFileInfo("TALK", "neutral");
-
-            return false;
+            Console.ReadLine();
+            Console.Clear();
+            return !Enemy.IsEnemyDefeated();
         }
     }
 }

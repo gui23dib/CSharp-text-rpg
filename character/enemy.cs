@@ -20,11 +20,28 @@ namespace heros_journey_text_RPG.character
 
         public int? npcId { set; get; }
 
+        public void ResetAttributes()
+        {
+            att.cha = constants.BaseAttNum;
+            att.str = constants.BaseAttNum;
+            att.dex = constants.BaseAttNum;
+            att.cons = constants.BaseAttNum;
+            att.cha = constants.BaseAttNum;
+            att.inte = constants.BaseAttNum;
+        }
+
         public void PrintEnemyMainStats()
         {
 
             Console.WriteLine("{0} - {1}", name, char_class);
             Console.WriteLine("HP: {0}", health_points);
+        }
+
+        public bool IsEnemyDefeated()
+        {
+            if (att.IsAnyAttributeEmpty()) return true;
+            if(health_points == 0) return false;
+            return false;
         }
 
     }
