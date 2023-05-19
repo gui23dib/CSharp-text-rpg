@@ -9,38 +9,49 @@ namespace heros_journey_text_RPG.character
 {
     public class Enemy : Character
     {
-        static private int enemies_defetead;
+        static private int enemies_defetead = 0;
 
         public Enemy()
         {
-            base.action_points = 1;
-            base.health_points = 10;
             base.att = new Attributes();
         }
 
+
         public int? npcId { set; get; }
 
+        public bool checkDefeatedEnemiesInteraction()
+        {
+            if(enemies_defetead % 10 == 0)
+            {
+                if(enemies_defetead > 50)
+                {
+                    //BOSS BATTLE
+                }
+                return true;
+            }
+            return false;
+        }
         public void ResetAttributes()
         {
-            att.cha = constants.BaseAttNum;
             att.str = constants.BaseAttNum;
             att.dex = constants.BaseAttNum;
             att.cons = constants.BaseAttNum;
             att.cha = constants.BaseAttNum;
-            att.inte = constants.BaseAttNum;
         }
 
         public void PrintEnemyMainStats()
         {
 
             Console.WriteLine("{0} - {1}", name, char_class);
-            Console.WriteLine("HP: {0}", health_points);
         }
 
         public bool IsEnemyDefeated()
         {
-            if (att.IsAnyAttributeEmpty()) return true;
-            if(health_points == 0) return false;
+            if (att.IsAnyAttributeEmpty())
+            {
+                enemies_defetead++;
+                return true;
+            }
             return false;
         }
 

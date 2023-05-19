@@ -13,15 +13,14 @@ namespace heros_journey_text_RPG.encounters
     {
         string situation { set; get; }
         string location { set; get; }
-        Enemy Enemy = new Enemy();
+        private Enemy Enemy;
         private Hero Hero;
-
         private Actions actions;
         public bool continueEncounter = false;
 
-        public Encounter(Hero hero) {
-            GenerateEncounter();
+        public Encounter(Hero hero, Enemy enemy) {
             Hero = hero;
+            Enemy = enemy;
             actions = new Actions(Hero, Enemy);
         }
 
@@ -32,8 +31,18 @@ namespace heros_journey_text_RPG.encounters
             Enemy.name = Utils.GetRandomFileLine("..\\..\\..\\files\\characters.txt");
         }
 
+        private void PrintAttributeHeader()
+        {
+            Console.WriteLine(Hero.name);
+            Hero.att.PrintAttributes();
+            Console.WriteLine();
+            Console.WriteLine(Enemy.name);
+            Enemy.att.PrintAttributes();
+        }
+
         private void PrintEncounter()
         {
+            PrintAttributeHeader();
             string characterPrefix = "aeiouAEIOU".IndexOf(Enemy.name[0]) >= 0 ? "an" : "a";
             Console.WriteLine("You found {0} {1} in {2} {3}\n", characterPrefix, Enemy.name, location, situation);
         }
@@ -65,6 +74,11 @@ namespace heros_journey_text_RPG.encounters
             {
                 PrintEncounter();
                 continueEncounter = GetEncounterOtpions();
+                if (Hero.att.IsAnyAttributeEmpty())
+                {
+                    //GAME LOSS
+                    return;
+                }
             } while (continueEncounter);
         }
     }

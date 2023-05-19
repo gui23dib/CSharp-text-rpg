@@ -13,18 +13,9 @@ namespace heros_journey_text_RPG.character
     public abstract class Character { 
     
         public string name { set; get; }
-        public int action_points { set; get; }
-        public int health_points { set; get; }
         public enum Classes { Warrior, Barbarian, Wizard }
         public Classes char_class { set; get; }
         public Attributes att { set; get; } = new Attributes();
 
-        public double checkClassInteractionsNum(Character entity)
-        {
-            if (char_class == entity.char_class) return 1;
-            if (char_class == entity.char_class--) return 2;
-            if (char_class == entity.char_class++) return 0.5;
-            return 1;
-        }
     }
 }

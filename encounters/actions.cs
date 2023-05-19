@@ -25,24 +25,23 @@ namespace heros_journey_text_RPG.encounters
         private void PrintEncounterInterface()
         {
             Console.WriteLine("{0} - lvl {1} {2} \t\t {3} - {4}", Hero.name, Hero.level, Hero.char_class, Enemy.name, Enemy.char_class);
-            Console.WriteLine("HP: {0} \t EXP: {1} \t\t HP: {2}", Hero.health_points, Hero.exp_points, Enemy.health_points);
         }
 
-        private void InitiateNewAction(string action)
+        private int InitiateNewAction(string action, int HeroAtt, int EnemyAtt)
         {
             Console.Clear();
             Console.WriteLine($"RESOLVING {action} ACTION...\n");
             PrintEncounterInterface();
             Console.WriteLine($"============================================================================\n");
-
+            return CompareDieAction(HeroAtt, EnemyAtt);
         }
 
-        private int CompareDieAction()
+        private int CompareDieAction(int HeroAtt, int EnemyAtt)
         {
             int EnemyDie = rnd.Next(1, 6);
             int HeroDie = rnd.Next(1, 6);
-            Console.WriteLine($"You \"{Hero.name}\" rolled {HeroDie} + {Hero.att.cha} \t Enemy \"{Enemy.name}\" rolled {EnemyDie} + {Enemy.att.cha}");
-            return (HeroDie + Hero.att.cha) - (EnemyDie + Enemy.att.cha);
+            Console.WriteLine($"You \"{Hero.name}\" rolled {HeroDie} + {HeroAtt} \t Enemy \"{Enemy.name}\" rolled {EnemyDie} + {EnemyAtt}");
+            return (HeroDie + HeroAtt) - (EnemyDie + EnemyAtt);
         }
 
         private void GetFileInfo(string action, string status)
@@ -52,30 +51,60 @@ namespace heros_journey_text_RPG.encounters
         }
 
         public bool AttackAction()
-        {    
-
-            return false;
+        {
+            var die = InitiateNewAction("ATTACK", Hero.att.str, Enemy.att.str);
+            if (die > 0)
+            {
+                GetFileInfo("ATTACK", "good");
+                Enemy.att.cons--;
+                Enemy.att.str -= Hero.att.str;
+            }
+            else if (die < 0)
+            {
+                GetFileInfo("ATTACK", "bad");
+                Hero.att.cons--;
+                Hero.att.str -= Enemy.att.str;
+            }
+            else
+            {
+                GetFileInfo("ATTACK", "neutral");
+                Hero.att.str--;
+                Enemy.att.str--;
+            }
+            Console.ReadLine();
+            Console.Clear();
+            return !Enemy.IsEnemyDefeated();
         }
 
         public bool RunAction()
         {
-            return false;
+            bool isPositiveDie = InitiateNewAction("RUN", Hero.att.dex, Enemy.att.dex) > 0;
+            GetFileInfo("RUN", isPositiveDie ? "good" : "bad");
+            if (!isPositiveDie) Hero.att.dex--;
+            Console.ReadLine();
+            Console.Clear();
+            return isPositiveDie ? false : true;
         }
 
         public bool TalkAction()
         {
-            InitiateNewAction("TALK");
-            var die = CompareDieAction();
+            var die = InitiateNewAction("TALK", Hero.att.cha, Enemy.att.cha);
             if (die > 0)
             {
                 GetFileInfo("TALK", "good");
-                Enemy.att.cha -= die;
+                Enemy.att.cha--;
             }
             else if (die < 0)
             {
                 GetFileInfo("TALK", "bad");
+                Hero.att.cha--;
             }
-            else GetFileInfo("TALK", "neutral");
+            else
+            {
+                GetFileInfo("TALK", "neutral");
+                Hero.att.cha--;
+                Enemy.att.cha--;
+            }
             Console.ReadLine();
             Console.Clear();
             return !Enemy.IsEnemyDefeated();

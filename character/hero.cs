@@ -12,8 +12,6 @@ namespace heros_journey_text_RPG.character
     {
         public string name { set; get; }
         public int level { set; get; }
-        public int exp_points { set; get; }
-
         public void InitHeroCharacter()
         {
             Console.WriteLine("Hello! what do you want to be called?");
@@ -28,10 +26,7 @@ namespace heros_journey_text_RPG.character
             Console.Clear();
             Console.WriteLine("The dark lord conquered all of the 5 nations and spread its evilness to the whole world, its your duty to stop him.\nAdventure calls...\n");
 
-            base.action_points = 1;
             level = 1;
-            exp_points = 0;
-            health_points = 12;
 
             PrintHeroMainStats();
 
@@ -45,7 +40,6 @@ namespace heros_journey_text_RPG.character
         {
 
             Console.WriteLine("{0} - lvl {1} {2}", name, level, char_class);
-            Console.WriteLine("HP: {0} \t EXP: {1}\n", health_points, exp_points);
         }
 
         public void HeroClassSelection()

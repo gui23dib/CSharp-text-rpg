@@ -10,11 +10,16 @@ namespace program
         static void Main(string[] args)
         {
             Hero hero = new Hero();
+            Enemy enemy = new Enemy();
             hero.InitHeroCharacter();
 
-            Encounter encounter = new Encounter(hero);
+            Encounter encounter = new Encounter(hero, enemy);
             while (true) { 
                 encounter.runNewEncounter();
+                if (enemy.checkDefeatedEnemiesInteraction())
+                {
+
+                }
                 Console.ReadLine();
             }
         }
