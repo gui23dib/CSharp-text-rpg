@@ -16,10 +16,7 @@ namespace program
             Encounter encounter = new Encounter(hero, enemy);
             while (true) { 
                 encounter.runNewEncounter();
-                if (enemy.checkDefeatedEnemiesInteraction())
-                {
-
-                }
+                enemy.checkDefeatedEnemiesInteraction();
                 Console.ReadLine();
             }
         }

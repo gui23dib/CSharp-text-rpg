@@ -1,3 +1,3 @@
 2
-yes
-yes
+You succesfully escaped combat!
+You ran towards the forest and somehow got rid of the enemy...
