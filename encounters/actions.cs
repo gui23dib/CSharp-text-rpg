@@ -38,16 +38,31 @@ namespace heros_journey_text_RPG.encounters
 
         private int CompareDieAction(int HeroAtt, int EnemyAtt)
         {
-            int EnemyDie = rnd.Next(1, 6);
-            int HeroDie = rnd.Next(1, 6);
-            Console.WriteLine($"You \"{Hero.name}\" rolled {HeroDie} + {HeroAtt} \t Enemy \"{Enemy.name}\" rolled {EnemyDie} + {EnemyAtt}");
-            return (HeroDie + HeroAtt) - (EnemyDie + EnemyAtt);
+            int[] EnemyDie = new int[2];
+            int[] HeroDie = new int[2];
+
+            HeroDie[0] = rnd.Next(1, 6);
+            HeroDie[1] = rnd.Next(1, 6);
+            EnemyDie[0] = rnd.Next(1, 6);
+            EnemyDie[1] = rnd.Next(1, 6);
+
+            //IMPLEMENTAR SISTEMA DE CRITICOS
+            Console.WriteLine($"You \"{Hero.name}\" rolled {HeroDie[0]} + {HeroDie[1]} + {HeroAtt} \t Enemy \"{Enemy.name}\" rolled {EnemyDie[0]} + {EnemyDie[1]} + {EnemyAtt}");
+            return (HeroDie[0] + HeroDie[1] + HeroAtt) - (EnemyDie[0] + EnemyDie[1] + EnemyAtt);
         }
 
         private void GetFileInfo(string action, string status)
         {
-            Console.WriteLine(Utils.GetRandomFileLine($"..\\..\\..\\files\\actions\\{action.ToLower()}\\{status}.txt"));
-            
+            Console.WriteLine(Utils.GetRandomFileLine($"..\\..\\..\\files\\actions\\{action.ToLower()}\\{status}.txt") + "\n");   
+        }
+
+        private void EnemyDebuffMessage(int HeroAtt, int EnemyAtt, string att)
+        {
+            Console.WriteLine("The enemy lost {0} {2}, it's currently at {1}...", HeroAtt, EnemyAtt, att);
+        }
+        private void HeroDebuffMessage(int HeroAtt, int EnemyAtt, string att)
+        {
+            Console.WriteLine("You lost {0} {2}, you're currently at {1}...", EnemyAtt, HeroAtt, att);
         }
 
         public bool AttackAction()
@@ -58,18 +73,25 @@ namespace heros_journey_text_RPG.encounters
                 GetFileInfo("ATTACK", "good");
                 Enemy.att.cons--;
                 Enemy.att.str -= Hero.att.str;
+                EnemyDebuffMessage(1, Enemy.att.cons, "constitution");
+                EnemyDebuffMessage(Hero.att.str, Enemy.att.str, "strength");
             }
             else if (die < 0)
             {
                 GetFileInfo("ATTACK", "bad");
                 Hero.att.cons--;
                 Hero.att.str -= Enemy.att.str;
+                HeroDebuffMessage(1, Hero.att.str, "constitution");
+                HeroDebuffMessage(Enemy.att.str, Hero.att.str, "strength");
+
             }
             else
             {
                 GetFileInfo("ATTACK", "neutral");
                 Hero.att.str--;
                 Enemy.att.str--;
+                EnemyDebuffMessage(1, Enemy.att.str, "strength");
+                HeroDebuffMessage(1, Hero.att.str, "strength");
             }
             Console.ReadLine();
             Console.Clear();
@@ -80,7 +102,13 @@ namespace heros_journey_text_RPG.encounters
         {
             bool isPositiveDie = InitiateNewAction("RUN", Hero.att.dex, Enemy.att.dex) > 0;
             GetFileInfo("RUN", isPositiveDie ? "good" : "bad");
-            if (!isPositiveDie) Hero.att.dex--;
+            Hero.att.dex--;
+            if (isPositiveDie)
+            {
+                EnemyDebuffMessage(1, Enemy.att.dex, "dexterity");
+                HeroDebuffMessage(1, Hero.att.cha, "dexterity");
+                //IMPLEMENTAR DADO DE REDUCAO
+            }
             Console.ReadLine();
             Console.Clear();
             return isPositiveDie ? !Enemy.IsEnemyDefeated() : true;
@@ -93,17 +121,21 @@ namespace heros_journey_text_RPG.encounters
             {
                 GetFileInfo("TALK", "good");
                 Enemy.att.cha--;
+                EnemyDebuffMessage(1, Enemy.att.cha, "charisma");
             }
             else if (die < 0)
             {
                 GetFileInfo("TALK", "bad");
                 Hero.att.cha--;
+                HeroDebuffMessage(1, Hero.att.cha, "charisma");
             }
             else
             {
                 GetFileInfo("TALK", "neutral");
                 Hero.att.cha--;
                 Enemy.att.cha--;
+                EnemyDebuffMessage(1, Enemy.att.cha, "charisma");
+                HeroDebuffMessage(1, Hero.att.cha, "charisma");
             }
             Console.ReadLine();
             Console.Clear();

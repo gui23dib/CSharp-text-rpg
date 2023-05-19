@@ -16,7 +16,7 @@ namespace heros_journey_text_RPG.character
         {
             Console.WriteLine("Hello! what do you want to be called?");
             Console.Write("Your name: ");
-            name = Console.ReadLine();
+            name = Console.ReadLine()!;
 
             Console.WriteLine("Welcome {0}!\n", name);
             HeroClassSelection();
@@ -44,9 +44,9 @@ namespace heros_journey_text_RPG.character
 
         public void HeroClassSelection()
         {
-            Console.Write("1 - Wizard\n2 - Warrior\n3 - Barbarian\n");
+            Console.Write("1 - Wizard (charisma focused)\n2 - Warrior (constitution focused)\n3 - Barbarian (strength focused)\n4 - Rogue (dexterity focused)\n");
             Console.Write("Choose your class: ");
-            if (!base.DefineClass(Console.ReadLine()))
+            if (!base.DefineClass(Console.ReadLine()!))
             {
                 Console.WriteLine("ops! choosen number does not correspond to any classes, try again!\n\n");
                 HeroClassSelection();
