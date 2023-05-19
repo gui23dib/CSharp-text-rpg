@@ -37,5 +37,29 @@ namespace heros_journey_text_RPG.character
             if (cha <= 0) return true;
             return false;
         }
+
+        public void DefineBarbarianClass()
+        {
+            str = 10;
+            dex = 3;
+            cons = 5;
+            cha = 2;
+        }
+
+        public void DefineWarriorClass()
+        {
+            str = 5;
+            dex = 7;
+            cons = 3;
+            cha = 5;
+        }
+
+        public void DefineWizardClass()
+        {
+            str = 2;
+            dex = 5;
+            cons = 3;
+            cha = 10;
+        }
     }
 }

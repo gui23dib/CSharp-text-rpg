@@ -83,7 +83,7 @@ namespace heros_journey_text_RPG.encounters
             if (!isPositiveDie) Hero.att.dex--;
             Console.ReadLine();
             Console.Clear();
-            return isPositiveDie ? false : true;
+            return isPositiveDie ? !Enemy.IsEnemyDefeated() : true;
         }
 
         public bool TalkAction()

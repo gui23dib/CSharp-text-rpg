@@ -46,21 +46,10 @@ namespace heros_journey_text_RPG.character
         {
             Console.Write("1 - Wizard\n2 - Warrior\n3 - Barbarian\n");
             Console.Write("Choose your class: ");
-            switch (Console.ReadLine())
+            if (!base.DefineClass(Console.ReadLine()))
             {
-                case "1":
-                    char_class = Character.Classes.Wizard;
-                    break;
-                case "2":
-                    char_class = Character.Classes.Warrior;
-                    break;
-                case "3":
-                    char_class = Character.Classes.Barbarian;
-                    break;
-                default:
-                    Console.WriteLine("ops! choosen number does not correspond to any classes, try again!\n\n");
-                    HeroClassSelection();
-                    break;
+                Console.WriteLine("ops! choosen number does not correspond to any classes, try again!\n\n");
+                HeroClassSelection();
             }
         }
     }
