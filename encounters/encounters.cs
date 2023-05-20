@@ -65,7 +65,7 @@ namespace heros_journey_text_RPG.encounters
 
         }
 
-        public void runNewEncounter()
+        public void runEncounters()
         {
             Console.Clear();
             Enemy.ResetAttributes();
@@ -78,6 +78,10 @@ namespace heros_journey_text_RPG.encounters
                 {
                     //GAME LOSS
                     return;
+                }
+                if (!continueEncounter)
+                {
+                    Console.WriteLine($"CONGRATULATIONS!!! You've bravely defeated the enemy {Enemy.name}\n\tYou have currently defeated {Enemy.enemies_defetead} enemies\n\tYou are {10 - Enemy.enemies_defetead % 10} enemies away from level {Hero.level + 1}");
                 }
             } while (continueEncounter);
         }

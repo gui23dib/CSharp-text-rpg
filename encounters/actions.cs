@@ -62,7 +62,7 @@ namespace heros_journey_text_RPG.encounters
         }
         private void HeroDebuffMessage(int HeroAtt, int EnemyAtt, string att)
         {
-            Console.WriteLine("You lost {0} {2}, you're currently at {1}...", EnemyAtt, HeroAtt, att);
+            Console.WriteLine("You lost {0} {2}, you're currently at {1}...", HeroAtt, EnemyAtt, att);
         }
 
         public bool AttackAction()

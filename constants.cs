@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
     public static class constants {
         public const int MaxStringNum = 32;
-        public const int BaseAttNum = 5;
+        public const int BaseAttNum = 2;
        
     }
 

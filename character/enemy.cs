@@ -9,10 +9,11 @@ namespace heros_journey_text_RPG.character
 {
     public class Enemy : Character
     {
-        static private int enemies_defetead = 0;
+        static public int enemies_defetead { private set; get; }
 
         public Enemy()
         {
+            enemies_defetead = 0;
             base.att = new Attributes();
         }
 
@@ -23,6 +24,7 @@ namespace heros_journey_text_RPG.character
         {
             if(enemies_defetead % 10 == 0)
             {
+                //LEVEL UP INTERACTION
                 if(enemies_defetead % 50 == 0)
                 {
                     //BOSS BATTLE
