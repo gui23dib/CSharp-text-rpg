@@ -20,17 +20,6 @@ namespace heros_journey_text_RPG.character
 
         public int? npcId { set; get; }
 
-        public void checkDefeatedEnemiesInteraction()
-        {
-            if(enemies_defetead % 10 == 0)
-            {
-                //LEVEL UP INTERACTION
-                if(enemies_defetead % 50 == 0)
-                {
-                    //BOSS BATTLE
-                }
-            }
-        }
         public void ResetAttributes()
         {
             att.str = constants.BaseAttNum;

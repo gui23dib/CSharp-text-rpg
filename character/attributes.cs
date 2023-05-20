@@ -21,12 +21,33 @@ namespace heros_journey_text_RPG.character
             cha = constants.BaseAttNum;
         }
 
-        public void PrintAttributes()
+        public void PrintAttributes(bool list = false)
         {
-            Console.WriteLine("<{0}> strength", str);
-            Console.WriteLine("<{0}> dexterity", dex);
-            Console.WriteLine("<{0}> constitution", cons);
-            Console.WriteLine("<{0}> charisma", cha);
+            Console.WriteLine("{1}<{0}> strength", str, list ? "1 - " : "");
+            Console.WriteLine("{1}<{0}> dexterity", dex, list ? "2 - " : "");
+            Console.WriteLine("{1}<{0}> constitution", cons, list ? "3 - " : "");
+            Console.WriteLine("{1}<{0}> charisma", cha, list ? "4 - " : "");
+        }
+
+        public bool upgradeAtt(string choice, int upgradeNum) 
+        {
+            switch (choice)
+            {
+                case "1":
+                    str += upgradeNum;
+                    break;
+                case "2":
+                    dex += upgradeNum;
+                    break;
+                case "3":
+                    cons += upgradeNum;
+                    break;
+                case "4":
+                    cha += upgradeNum;
+                    break;
+                default: return false;
+            }
+            return true;
         }
 
         public bool IsAnyAttributeEmpty()

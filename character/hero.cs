@@ -29,10 +29,41 @@ namespace heros_journey_text_RPG.character
             level = 1;
 
             PrintHeroMainStats();
-
-            base.att.PrintAttributes();
+            att.PrintAttributes();
 
             Console.WriteLine("\nStart your adventure by presing any keys...");
+            Console.ReadLine();
+        }
+
+        private void MajorUp()
+        {
+            att.PrintAttributes(true);
+            Console.Write("\nWhich attribute would you like to minor upgrade? ");
+            if (!att.upgradeAtt(Console.ReadLine(), 4)) MajorUp();
+        }
+
+        private void MinorUp()
+        {
+            att.PrintAttributes(true);
+            Console.Write("\nWhich attribute would you like to minor upgrade? ");
+            if (!att.upgradeAtt(Console.ReadLine(), 2)) MinorUp();
+        }
+
+
+        public void LevelUp()
+        {
+            Console.Clear();
+            Console.WriteLine("LEVEL UP!!!");
+            Console.WriteLine($"You just reached level {level++}\n");
+            
+            MajorUp();
+            MinorUp();
+
+            Console.Clear();
+            PrintHeroMainStats();
+            att.PrintAttributes();
+
+            Console.WriteLine("\nResume your adventure by presing any keys...");
             Console.ReadLine();
         }
 

@@ -24,6 +24,18 @@ namespace heros_journey_text_RPG.encounters
             actions = new Actions(Hero, Enemy);
         }
 
+        public void checkDefeatedEnemiesInteraction()
+        {
+            if (Enemy.enemies_defetead % 10 == 0)
+            {
+                Hero.LevelUp();
+                if (Enemy.enemies_defetead % 50 == 0)
+                {
+                    //BOSS BATTLE
+                }
+            }
+        }
+
         private void GenerateEncounter()
         {
             situation = Utils.GetRandomFileLine("..\\..\\..\\files\\situations.txt");
