@@ -36,19 +36,30 @@ namespace heros_journey_text_RPG.encounters
             return CompareDieAction(HeroAtt, EnemyAtt);
         }
 
+
+
         private int CompareDieAction(int HeroAtt, int EnemyAtt)
         {
-            int[] EnemyDie = new int[2];
-            int[] HeroDie = new int[2];
+            int EnemyDie = rnd.Next(1, 10);
+            int HeroDie = rnd.Next(1, 10);
 
-            HeroDie[0] = rnd.Next(1, 6);
-            HeroDie[1] = rnd.Next(1, 6);
-            EnemyDie[0] = rnd.Next(1, 6);
-            EnemyDie[1] = rnd.Next(1, 6);
+            int CriticalHitInteractions(int die, string name, int att)
+            {
+                if (die == 10)
+                {
+                    Console.WriteLine($"{name} rolled critical! and got double the stats!");
+                    return att;
+                } else
+                {
+                    return 0;
+                }
+            }
 
-            //IMPLEMENTAR SISTEMA DE CRITICOS
-            Console.WriteLine($"You \"{Hero.name}\" rolled {HeroDie[0]} + {HeroDie[1]} + {HeroAtt} \t Enemy \"{Enemy.name}\" rolled {EnemyDie[0]} + {EnemyDie[1]} + {EnemyAtt}");
-            return (HeroDie[0] + HeroDie[1] + HeroAtt) - (EnemyDie[0] + EnemyDie[1] + EnemyAtt);
+            int HeroSum = HeroDie + HeroAtt + CriticalHitInteractions(HeroDie, "You've", HeroAtt);
+            int EnemySum = EnemyDie + EnemyAtt + CriticalHitInteractions(EnemyDie, $"The {Enemy.name}", EnemyAtt);
+
+            Console.WriteLine($"You \"{Hero.name}\" rolled {HeroDie} + {HeroAtt} = {HeroSum} \t Enemy \"{Enemy.name}\" rolled {EnemyDie} + {EnemyAtt} = {EnemySum}");
+            return (HeroSum) - (EnemySum);
         }
 
         private void GetFileInfo(string action, string status)

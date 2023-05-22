@@ -29,7 +29,7 @@ namespace heros_journey_text_RPG.character
             Console.WriteLine("{1}<{0}> charisma", cha, list ? "4 - " : "");
         }
 
-        public bool upgradeAtt(string choice, int upgradeNum) 
+        public bool UpgradeAtt(string choice, int upgradeNum) 
         {
             switch (choice)
             {

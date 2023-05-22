@@ -21,8 +21,6 @@ namespace heros_journey_text_RPG.character
             Console.WriteLine("Welcome {0}!\n", name);
             HeroClassSelection();
 
-            //Sleep(1)
-
             Console.Clear();
             Console.WriteLine("The dark lord conquered all of the 5 nations and spread its evilness to the whole world, its your duty to stop him.\nAdventure calls...\n");
 
@@ -35,18 +33,27 @@ namespace heros_journey_text_RPG.character
             Console.ReadLine();
         }
 
+        public void GameLoss(int enemiesDefeated)
+        {
+            Console.Clear();
+            Console.WriteLine("GAME OVER");
+            Console.WriteLine("Thanks for playing {0}!", name);
+            Console.WriteLine("You've reached level {0} and defeated {1} enemies\n", level, enemiesDefeated);
+
+        }
+
         private void MajorUp()
         {
             att.PrintAttributes(true);
             Console.Write("\nWhich attribute would you like to minor upgrade? ");
-            if (!att.upgradeAtt(Console.ReadLine(), 4)) MajorUp();
+            if (!att.UpgradeAtt(Console.ReadLine()!, 4)) MajorUp();
         }
 
         private void MinorUp()
         {
             att.PrintAttributes(true);
             Console.Write("\nWhich attribute would you like to minor upgrade? ");
-            if (!att.upgradeAtt(Console.ReadLine(), 2)) MinorUp();
+            if (!att.UpgradeAtt(Console.ReadLine()!, 2)) MinorUp();
         }
 
 

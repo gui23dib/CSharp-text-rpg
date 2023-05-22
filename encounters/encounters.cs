@@ -88,7 +88,7 @@ namespace heros_journey_text_RPG.encounters
                 continueEncounter = GetEncounterOtpions();
                 if (Hero.att.IsAnyAttributeEmpty())
                 {
-                    //GAME LOSS
+                    Hero.GameLoss(Enemy.enemies_defetead);
                     return;
                 }
                 if (!continueEncounter)
