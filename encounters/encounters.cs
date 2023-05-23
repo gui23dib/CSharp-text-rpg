@@ -86,16 +86,17 @@ namespace heros_journey_text_RPG.encounters
             {
                 PrintEncounter();
                 continueEncounter = GetEncounterOtpions();
-                if (Hero.att.IsAnyAttributeEmpty())
-                {
-                    Hero.GameLoss(Enemy.enemies_defetead);
-                    return;
-                }
-                if (!continueEncounter)
-                {
-                    Console.WriteLine($"CONGRATULATIONS!!! You've bravely defeated the enemy {Enemy.name}\n\tYou have currently defeated {Enemy.enemies_defetead} enemies\n\tYou are {10 - Enemy.enemies_defetead % 10} enemies away from level {Hero.level + 1}");
-                }
             } while (continueEncounter);
+            if (Hero.att.IsAnyAttributeEmpty())
+            {
+                Hero.GameLoss(Enemy.enemies_defetead);
+                return;
+            }
+            else
+            {
+                Console.WriteLine($"CONGRATULATIONS!!! You've bravely defeated the enemy {Enemy.name}\n\tYou have currently defeated {Enemy.enemies_defetead} enemies\n\tYou are {10 - Enemy.enemies_defetead % 10} enemies away from level {Hero.level + 1}");
+                Console.ReadLine();
+            }
         }
     }
 }

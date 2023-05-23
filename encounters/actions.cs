@@ -114,15 +114,15 @@ namespace heros_journey_text_RPG.encounters
             bool isPositiveDie = InitiateNewAction("RUN", Hero.att.dex, Enemy.att.dex) > 0;
             GetFileInfo("RUN", isPositiveDie ? "good" : "bad");
             Hero.att.dex--;
-            if (isPositiveDie)
+            HeroDebuffMessage(1, Hero.att.dex, "dexterity");
+            if (!isPositiveDie)
             {
+                Enemy.att.dex--;
                 EnemyDebuffMessage(1, Enemy.att.dex, "dexterity");
-                HeroDebuffMessage(1, Hero.att.cha, "dexterity");
-                //IMPLEMENTAR DADO DE REDUCAO
             }
             Console.ReadLine();
             Console.Clear();
-            return isPositiveDie ? !Enemy.IsEnemyDefeated() : true;
+            return isPositiveDie ? false : true;
         }
 
         public bool TalkAction()

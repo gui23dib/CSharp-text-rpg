@@ -17,7 +17,6 @@ namespace program
             while (true) { 
                 encounter.runEncounters();
                 encounter.checkDefeatedEnemiesInteraction();
-                Console.ReadLine();
             }
         }
     }
